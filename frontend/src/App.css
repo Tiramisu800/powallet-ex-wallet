@@ -1,0 +1,268 @@
+.App {
+  text-align: center;
+  width: 400px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.frontPageLogo {
+  width: 100%;
+}
+
+.frontPageBottom {
+  align-items: flex-end;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 90%;
+  margin-bottom: 15px;
+  gap: 5px;
+}
+
+.frontPageBottom:hover {
+  cursor: pointer;
+  color: gray;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 5px;
+  color: rgb(46, 46, 46);
+}
+
+.h4 {
+  color: rgb(46, 46, 46);
+  padding-bottom: 50px;
+}
+
+a:visited {
+  color: rgb(153, 0, 255);
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLogo {
+  height: 70px;
+  margin-left: 10px;
+}
+
+.dropdown {
+  margin-right: 20px;
+}
+.dropdown:hover{
+  border: 1px solid #D3FCA0;
+  border-radius: 6px;
+}
+
+.content {
+  text-align: center;
+  width: 400px;
+  height: 550px;
+  overflow-y: hidden;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+.mnemonic {
+  color: #1E1E1E;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+  text-align: justify;
+  width: 310px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.seedPhraseContainer {
+  width: 310px;
+  min-height: 160px;
+  padding: 5px;
+  margin-top: 30px;
+}
+
+.walletName {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.logoutButton {
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  border-radius: 100px;
+}
+
+.logoutButton:hover {
+  background-color: rgba(0, 0, 0, 0.036);
+  cursor: pointer;
+}
+
+.walletView {
+  width: 400px;
+  padding: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sendRow {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+}
+
+.nftImage {
+  margin-bottom: 10px;
+  height: 240px;
+  width: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+
+/* CreateAccount.css */
+/* CreateAccount.css */
+
+.seedPhraseContainer {
+  background-color: #fafafa;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  font-size: 16px;
+  align-items: center;
+}
+.seedPhraseContainer:hover{
+  border-color: #D3FCA0;
+}
+
+.ant-card {
+  margin-bottom: 16px;
+}
+
+.ant-btn-primary {
+  background-color: #1e90ff;
+  border-color: #1e90ff;
+}
+
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  background-color: #1c86ee;
+  border-color: #1c86ee;
+}
+
+
+.recover-title {
+  margin-bottom: 20px;
+}
+
+.seedPhraseContainer {
+  margin-bottom: 20px;
+}
+
+.passwordInput {
+  margin-bottom: 20px;
+  width: 80%;
+}
+.passwordInput:hover{
+  border-color: #D3FCA0;
+}
+
+.frontPageButton {
+  width: 100%;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.frontPageBottom {
+  margin-top: 20px;
+  cursor: pointer;
+  color: #1890ff;
+}
+
+/*buttons*/
+.frontPageButton1 {
+  width: 80%;
+  margin-top: 5px;
+  height:40px;
+  background-color:#D3FCA0;
+  color:#1E1E1E;
+  font-size: 14px;
+  font-style: normal;
+  border-radius: 30px;
+}
+.frontPageButton1:hover{
+  background-color: #e0e5d8;
+  color: #000000;
+}
+
+.frontPageButton2{
+  width: 80%;
+  height: 40px;
+  margin-top: 5px;
+  background-color: #1E1E1E;
+  color: #f9f9f9;
+  font-size: 14px;
+  font-style: normal;
+  border-radius: 30px;
+  border: 1px solid #1E1E1E;
+}
+
+.frontPageButton{
+  width: 80%;
+  height: 40px;
+  margin-top: 10px;
+  color: #1E1E1E;
+  border:  1px solid #1E1E1E;;
+}
+.frontPageButton:hover{
+  border-color: #708951;
+  color: #708951;
+}
+
+.linkButton{
+  width: 80%;
+  color: #1E1E1E;
+}
+
+#home{
+  background-color: #D3FCA0;
+}
+
+.window{
+  background-color:white;
+  border-radius:10px;
+  padding:10px;
+}
+
+.input:hover{
+  border-color: #D3FCA0;
+}
+
+#margin{
+  margin-bottom:25px;
+}

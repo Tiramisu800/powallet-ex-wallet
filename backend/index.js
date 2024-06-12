@@ -6,8 +6,8 @@ const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 const cors = require("cors");
 require("dotenv").config();
-const User = require('./models/User');
-const { fetchBlacklistData, isAddressBlacklisted, isDomainBlacklisted } = require("./utils/blackList");
+const User = require('./models/User'); // Correct import
+const { scanAddress } = require("./utils/blacklist");
 const CryptoJS = require("crypto-js");
 
 const app = express();
@@ -21,10 +21,6 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
-
-// Fetch and update blacklist data regularly
-fetchBlacklistData();
-setInterval(fetchBlacklistData, 60 * 60 * 1000); 
 
 // Routes
 app.get("/getTokens", async (req, res) => {
@@ -72,23 +68,20 @@ app.get("/getWalletTransactions", async (req, res) => {
   }
 });
 
-app.post("/checkAddress", (req, res) => {
+app.post("/checkAddress", async (req, res) => {
   const { address } = req.body;
-  if (isAddressBlacklisted(address)) {
-    return res.status(200).json({ message: 'This address is blacklisted. Are you sure you want to send funds?' });
+  try {
+    const result = await scanAddress(address);
+    if (result) {
+      return res.status(200).json({ riskLevel: result.overall_assessment });
+    } else {
+      return res.status(500).json({ message: 'Error scanning address' });
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
-  return res.status(200).json({ message: 'This address is not in the blacklist.' });
 });
 
-app.post("/checkDomain", (req, res) => {
-  const { domain } = req.body;
-  if (isDomainBlacklisted(domain)) {
-    return res.status(200).json({ message: 'This domain is blacklisted. Navigation is blocked.' });
-  }
-  return res.status(200).json({ message: 'This domain is not in the blacklist.' });
-});
-
-// Routes
 app.post("/register", async (req, res) => {
   const { password, mnemonic, seedPhrase } = req.body;
   try {

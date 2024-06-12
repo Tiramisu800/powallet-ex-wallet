@@ -1,32 +1,32 @@
 const axios = require("axios");
 
-let addressBlacklist = [];
-let domainBlacklist = [];
-
-// Fetch blacklist data from GitHub
-const fetchBlacklistData = async () => {
+const scanAddress = async (address) => {
   try {
-    const response = await axios.get('https://raw.githubusercontent.com/scamsniffer/scam-database/main/blacklist/all.json');
-    const blacklistData = response.data;
-
-    if (blacklistData && blacklistData.address && blacklistData.domains) {
-      addressBlacklist = blacklistData.address.map(address => address.toLowerCase());
-      domainBlacklist = blacklistData.domains;
-      console.log('Blacklist data parsed successfully:', addressBlacklist, domainBlacklist);
-    } else {
-      console.error('Blacklist data is not in the expected format.');
-    }
+    const response = await axios.get(`http://143.110.178.16:8000/scan/${address}`, {
+      headers: {
+        'X-API-KEY': 'your_api_key_1'
+      }
+    });
+    return response.data;
   } catch (error) {
-    console.error('Error fetching blacklist data:', error);
+    console.error('Error scanning address:', error);
+    return null;
   }
 };
 
-const isAddressBlacklisted = (address) => {
-  return addressBlacklist.includes(address.toLowerCase());
-};
 
-const isDomainBlacklisted = (domain) => {
-  return domainBlacklist.includes(domain.toLowerCase());
-};
+// const getAddressInfo = async (address) = {
+//   try {
+//     const res = await axios.get(`http://143.110.178.16:8000/address-info/${address}`, {
+//       headers: {
+//         'X-API-KEY': 'your_api_key_1'
+//       }
+//     });
+//     return res.data;
+//   } catch (error) {
+//     console.error('Error scanning address:', error);
+//     return null;
 
-module.exports = { fetchBlacklistData, isAddressBlacklisted, isDomainBlacklisted };
+//   }
+// })
+module.exports = { scanAddress };

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   password: {
@@ -9,6 +9,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // Add any other fields you need
 });
 
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model('User', UserSchema);
+
+module.exports = User;

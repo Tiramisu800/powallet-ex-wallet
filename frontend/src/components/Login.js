@@ -15,7 +15,7 @@ function Login({ setWallet, setSeedPhrase, setIsLocked }) {
 
       if (response.data.encryptedMnemonic) {
         // Decrypt the encrypted mnemonic stored in local storage
-        const encryptedMnemonic = localStorage.getItem("encryptedMnemonic");
+        const encryptedMnemonic = response.data.encryptedMnemonic;
         const decryptedMnemonic = CryptoJS.AES.decrypt(encryptedMnemonic, password).toString(CryptoJS.enc.Utf8);
 
         // Use mnemonic to set wallet and seed phrase

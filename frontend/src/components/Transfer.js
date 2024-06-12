@@ -18,7 +18,7 @@ const Transfer = ({
         value={amountToSend}
         onChange={onAmountChange}
         placeholder="0.000001..."
-        bordered={false}
+        variant={false}
       />
     </div>
     <div className="sendRow">

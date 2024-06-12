@@ -10,7 +10,6 @@ import Transfer from "./Transfer";
 import TransactionHistory from "./TransactionHistory";
 import { ethers } from "ethers";
 
-
 const WalletView = ({
   wallet,
   setWallet,
@@ -33,19 +32,16 @@ const WalletView = ({
   const [confirmedBlacklisted, setConfirmedBlacklisted] = useState(false);
   const [insufficientFundsMessage, setInsufficientFundsMessage] = useState(null);
   const [nullAmountMessage, setNullAmountMessage] = useState(null);
-
+  const [riskLevel, setRiskLevel] = useState(null);
 
   const items = [
     {
       key: "3",
       label: `Tokens`,
       children: tokens ? <TokenList tokens={tokens} /> : (
-        <>
         <div className="window">
           <span>You seem to not have any tokens yet</span>
         </div>
-          
-        </>
       ),
     },
     {
@@ -97,13 +93,16 @@ const WalletView = ({
   const checkAddressAndSendTransaction = async (to, amount) => {
     try {
       const response = await axios.post(`http://localhost:3001/checkAddress`, { address: to });
-      const message = response.data.message;
+      const riskLevel = response.data.riskLevel;
 
-      console.log(`Address check response: ${message}`);
-      if (message.includes("blacklisted")) {
-        if (!confirmedBlacklisted) {
-          setBlacklistedMessage(message);
-          return;
+      if (riskLevel) {
+        setRiskLevel(riskLevel);
+
+        if (riskLevel.includes("blacklisted")) {
+          if (!confirmedBlacklisted) {
+            setBlacklistedMessage("This address is blacklisted. Are you sure you want to send funds?");
+            return;
+          }
         }
       }
 
@@ -183,12 +182,11 @@ const WalletView = ({
     setTokens(null);
     setBalance(0);
     navigate("/");
-  
-      localStorage.removeItem("encryptedMnemonic");
-      setWallet(null);
-      setSeedPhrase(null);
-      navigate("/");
-  
+
+    localStorage.removeItem("encryptedMnemonic");
+    setWallet(null);
+    setSeedPhrase(null);
+    navigate("/");
   };
 
   useEffect(() => {
@@ -246,13 +244,36 @@ const WalletView = ({
               </Button>,
               <Button
               key="details">
-                <a href="https://youtu.be/BBJa32lCaaY?si=jPOWpmnfNMstpCR3" target="_blank" rel="noopener noreferrer">
+                <a href={`http://143.110.178.16:8000/address-info/${sendToAddress}`} target="_blank" rel="noopener noreferrer">
                 More Details
                 </a>
               </Button>,
             ]}
           >
             <p>{blacklistedMessage}</p>
+          </Modal>
+        )}
+        {riskLevel && (
+          <Modal
+            title="Risk Level"
+            visible={true}
+            onCancel={() => setRiskLevel(null)}
+            footer={[
+              <Button
+                key="ok"
+                onClick={() => setRiskLevel(null)}
+              >
+                OK
+              </Button>,
+              <Button
+                key="details">
+                <a href={`http://143.110.178.16:8000/address-info/${sendToAddress}`} target="_blank" rel="noopener noreferrer">
+                  See More
+                </a>
+              </Button>,
+            ]}
+          >
+            <p>This address risk level is: {riskLevel}</p>
           </Modal>
         )}
         {insufficientFundsMessage && ( // New modal for insufficient funds message

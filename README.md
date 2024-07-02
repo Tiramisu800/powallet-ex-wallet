@@ -8,6 +8,8 @@ poWallet is a Chrome extension designed to provide secure cryptocurrency transac
 ![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/277753ec-8c35-4ab1-a41e-25728e6d3923)
 ![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/4ba25f44-3722-4f12-b018-c8b3870a91e1)
 ![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/847d9399-d7a3-47c2-8e2d-c8fa671e3a7f)
+![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/0dceb343-2f5f-4d7b-8a33-359fba68d9ec)
+
 
 
 

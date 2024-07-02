@@ -3,6 +3,15 @@
 ## Overview
 poWallet is a Chrome extension designed to provide secure cryptocurrency transactions by integrating an ML-based risk detection API. It helps users assess the risk associated with blockchain addresses in real-time.
 
+![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/c76a3d33-ac6d-4b15-9994-f8cf10b9e224)
+![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/de169fa7-95e8-48f0-b501-9382e73e44ee)
+![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/277753ec-8c35-4ab1-a41e-25728e6d3923)
+![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/4ba25f44-3722-4f12-b018-c8b3870a91e1)
+![poWallet Chrome Extension](https://github.com/Tiramisu800/powallet-ex-wallet/assets/97789571/847d9399-d7a3-47c2-8e2d-c8fa671e3a7f)
+
+
+
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -51,3 +60,6 @@ poWallet is a Chrome extension designed to provide secure cryptocurrency transac
 1.Open the poWallet extension from the Chrome toolbar.
 2. Enter a wallet address to check its risk level.
 3. The extension will display the risk assessment based on the [SCAN SCAM API](https://github.com/varenyeolad/scan-fraud-ml).
+
+
+
